@@ -1,0 +1,105 @@
+{
+  "name": "BF3",
+  "BtmToMid": [
+    {
+      "telehandle": "dqblake",
+      "attendance": ""
+    },
+    {
+      "telehandle": "MarriedmanM",
+      "attendance": ""
+    },
+    {
+      "telehandle": "s3phy86",
+      "attendance": ""
+    },
+    {
+      "telehandle": "alvincxx",
+      "attendance": ""
+    }
+  ],
+  "BtmToTop": [
+    {
+      "telehandle": "babyshark121",
+      "attendance": ""
+    },
+    {
+      "telehandle": "JS_192",
+      "attendance": ""
+    },
+    {
+      "telehandle": "HaNNoR",
+      "attendance": ""
+    }
+  ],
+  "MidToBtm": [
+    {
+      "telehandle": "Exorbis",
+      "attendance": ""
+    },
+    {
+      "telehandle": "js4896",
+      "attendance": ""
+    },
+    {
+      "telehandle": "isxir",
+      "attendance": ""
+    }
+  ],
+  "MidToTop": [
+    {
+      "telehandle": "xx1001xx",
+      "attendance": ""
+    },
+    {
+      "telehandle": "snvim",
+      "attendance": ""
+    },
+    {
+      "telehandle": "Niclim90",
+      "attendance": ""
+    }
+  ],
+  "Standbys": [
+    {
+      "telehandle": "rixsv",
+      "attendance": ""
+    },
+    {
+      "telehandle": "mqwrf",
+      "attendance": ""
+    }
+  ],
+  "TopToBtm": [
+    {
+      "telehandle": "xiiintao",
+      "attendance": ""
+    },
+    {
+      "telehandle": "sKunzzz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "picobes",
+      "attendance": ""
+    }
+  ],
+  "TopToMid": [
+    {
+      "telehandle": "LiewLiew",
+      "attendance": ""
+    },
+    {
+      "telehandle": "MercedesKenz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "SWEEYEE",
+      "attendance": ""
+    },
+    {
+      "telehandle": "BryanIsTheName",
+      "attendance": ""
+    }
+  ]
+}

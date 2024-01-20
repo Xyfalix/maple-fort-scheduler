@@ -27,19 +27,6 @@ db = client[DATABASE_NAME]
 
 # Commands
 # user initiated command
-async def add_user_command(update:Update, context: ContextTypes.DEFAULT_TYPE):
-    command_text = update.message.text
-    print(command_text)
-    username = command_text.replace("/adduser", "").strip()
-
-    new_user = User(username=username)
-    new_user.save_to_db()
-
-    response = f"User {username} added successfully!"
-    print(f"Bot: {response}")
-    await update.message.reply_text(response)
-
-# user initiated command
 async def view_fort_list(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await generate_temp_fort_list(context)
 

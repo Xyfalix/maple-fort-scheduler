@@ -11,21 +11,21 @@
       "attendance": ""
     },
     {
-      "telehandle": "s3phy86",
+      "telehandle": "JS_192",
       "attendance": ""
     },
     {
-      "telehandle": "alvincxx",
+      "telehandle": "babyshark121",
       "attendance": ""
     }
   ],
   "BtmToTop": [
     {
-      "telehandle": "babyshark121",
+      "telehandle": "Jrsss",
       "attendance": ""
     },
     {
-      "telehandle": "JS_192",
+      "telehandle": "SWEEYEE",
       "attendance": ""
     },
     {
@@ -35,7 +35,7 @@
   ],
   "MidToBtm": [
     {
-      "telehandle": "Exorbis",
+      "telehandle": "snvim",
       "attendance": ""
     },
     {
@@ -49,47 +49,26 @@
   ],
   "MidToTop": [
     {
-      "telehandle": "xx1001xx",
+      "telehandle": "LongNguyenxVN",
       "attendance": ""
     },
     {
-      "telehandle": "snvim",
+      "telehandle": "bnnpl",
       "attendance": ""
     },
-    {
-      "telehandle": "ongchengwei",
-      "attendance": ""
-    }
-  ],
-  "Standbys": [
     {
       "telehandle": "rixsv",
       "attendance": ""
-    },
+    }
+  ],
+  "Standbys": [],
+  "TopToBtm": [
     {
       "telehandle": "mqwrf",
       "attendance": ""
     },
     {
-      "telehandle": "redrust",
-      "attendance": ""
-    },
-    {
       "telehandle": "sKunZzz",
-      "attendance": ""
-    },
-    {
-      "telehandle": "MercedesKenz",
-      "attendance": ""
-    }
-  ],
-  "TopToBtm": [
-    {
-      "telehandle": "xiiintao",
-      "attendance": ""
-    },
-    {
-      "telehandle": "YewGin",
       "attendance": ""
     },
     {
@@ -103,15 +82,15 @@
       "attendance": ""
     },
     {
-      "telehandle": "justhql",
+      "telehandle": "LiewLiew",
       "attendance": ""
     },
     {
-      "telehandle": "SWEEYEE",
+      "telehandle": "YewGin",
       "attendance": ""
     },
     {
-      "telehandle": "BryanIsTheName",
+      "telehandle": "s3phy86",
       "attendance": ""
     }
   ]

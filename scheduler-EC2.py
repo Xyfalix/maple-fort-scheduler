@@ -141,24 +141,12 @@ async def increment_index(context: ContextTypes.DEFAULT_TYPE):
 async def generate_temp_fort_list(context: ContextTypes.DEFAULT_TYPE):
     try:
         fortlist = db.fortlists
-        index_collection = db.index
         print("Pulling fort list...")
-
-        # retrieve index doc
-        index_doc = index_collection.find_one({"name": "index"})
-        index_value = index_doc.get("value", "error retrieving value")
-        print(f'index_value is {index_value}')
 
         # Find the document with the specified name
         bf_list_document = fortlist.find_one({"name": "temp"})
 
         if bf_list_document:
-            # Access the data from the BFList document
-            name = FORT_SCHEDULE_ARRAY[index_value]
-
-            # Process the data as needed
-            print(f"Fort List Name: {name}")
-
             # Format the message
             message = f"{datetime.today().strftime('%d %b %Y')} Fort\n"
             message += f"Node: FS4\n"
@@ -218,7 +206,8 @@ async def generate_temp_fort_list(context: ContextTypes.DEFAULT_TYPE):
 async def send_fort_list(context: ContextTypes.DEFAULT_TYPE):
     fort_list = context.bot_data.get('fort_list', 'fort list not found')
     # change chat_id to the group that you want to send it to
-    await context.bot.send_message(chat_id=NICHOLAS_CHAT_ID, text=fort_list)
+    sent_message = await context.bot.send_message(chat_id=EXILES_MAIN_CHAT_ID, text=fort_list)
+    await context.bot.pin_chat_message(chat_id=EXILES_MAIN_CHAT_ID, message_id=sent_message.message_id)
 
 
 # scheduled command
@@ -497,31 +486,32 @@ def main():
 
     # check if temp list exists and delete it if it exists
     # prod code 
-    remove_temp_fort_list = job_queue.run_daily(delete_temp_fort_list, time=time(hour=1, minute=22, tzinfo=timezone_utc8), days=(0, 6))
+    job_queue.run_daily(delete_temp_fort_list, time=time(hour=12, minute=23, tzinfo=timezone_utc8), days=(6, 0))
 
     # test code to check for functionality
-    # remove_temp_fort_list = job_queue.run_once(delete_temp_fort_list, 5)
+    # job_queue.run_once(delete_temp_fort_list, 5)
 
     # # select correct fort list and make a copy and set as temp list for viewing and editing
     # prod code
-    make_temp_fort_list = job_queue.run_daily(duplicate_fort_list, time=time(hour=1, minute=23, tzinfo=timezone_utc8), days=(6, 0))
+    job_queue.run_daily(duplicate_fort_list, time=time(hour=12, minute=25, tzinfo=timezone_utc8), days=(6, 0))
 
     # test code
-    # make_temp_fort_list = job_queue.run_once(duplicate_fort_list, 10)
+    # job_queue.run_once(duplicate_fort_list, 10)
 
 
     # display fort list at 12mn on sat and sun
     # prod code
-    generate_fort_list = job_queue.run_daily(generate_temp_fort_list, time=time(hour=1, minute=24, second=0, tzinfo=timezone_utc8), days=(6, 0))
-    display_fort_list = job_queue.run_daily(send_fort_list, time=time(hour=1, minute=25, second=40, tzinfo=timezone_utc8), days=(6, 0))
+    job_queue.run_daily(generate_temp_fort_list, time=time(hour=12, minute=27, second=0, tzinfo=timezone_utc8), days=(6, 0))
+    job_queue.run_daily(send_fort_list, time=time(hour=12, minute=30, second=0, tzinfo=timezone_utc8), days=(6, 0))
+    job_queue.run_daily(send_fort_list, time=time(hour=20, minute=0, second=0, tzinfo=timezone_utc8), days=(6, 0))
 
     # test code
-    # generate_fort_list = job_queue.run_once(generate_temp_fort_list, 15)
-    # display_fort_list = job_queue.run_once(send_fort_list, 25)
+    # job_queue.run_once(generate_temp_fort_list, 15)
+    # job_queue.run_once(send_fort_list, 25)
 
     # increment index after fort list is sent
     # prod code
-    update_fort_list_index = job_queue.run_daily(increment_index, time=time(hour=1, minute=26, second=0, tzinfo=timezone_utc8), days=(6, 0))
+    job_queue.run_daily(increment_index, time=time(hour=12, minute=35, second=0, tzinfo=timezone_utc8), days=(6, 0))
 
     # test code
     # update_fort_list_index = job_queue.run_once(increment_index, 20)

@@ -2,77 +2,71 @@
   "name": "BF3",
   "BtmToMid": [
     {
-      "telehandle": "dqblake",
-      "attendance": ""
-    },
-    {
-      "telehandle": "MarriedmanM",
-      "attendance": ""
-    },
-    {
-      "telehandle": "s3phy86",
+      "telehandle": "CLY1921",
       "attendance": ""
     },
     {
       "telehandle": "alvincxx",
       "attendance": ""
+    },
+    {
+      "telehandle": "ekimoen",
+      "attendance": ""
     }
   ],
   "BtmToTop": [
     {
-      "telehandle": "babyshark121",
+      "telehandle": "SKYTLSk",
       "attendance": ""
     },
     {
-      "telehandle": "JS_192",
+      "telehandle": "mirellexx",
       "attendance": ""
     },
     {
-      "telehandle": "HaNNoR",
+      "telehandle": "eesmx",
       "attendance": ""
     }
   ],
   "MidToBtm": [
     {
-      "telehandle": "Exorbis",
+      "telehandle": "b2darren",
       "attendance": ""
     },
-    {
-      "telehandle": "js4896",
-      "attendance": ""
-    },
-    {
-      "telehandle": "isxir",
-      "attendance": ""
-    }
-  ],
-  "MidToTop": [
     {
       "telehandle": "xx1001xx",
       "attendance": ""
     },
     {
-      "telehandle": "snvim",
+      "telehandle": "Hanghang84",
       "attendance": ""
     },
     {
-      "telehandle": "Niclim90",
+      "telehandle": "XxVelo",
+      "attendance": ""
+    }
+  ],
+  "MidToTop": [
+    {
+      "telehandle": "redrust",
+      "attendance": ""
+    },
+    {
+      "telehandle": "SKYTLSK",
+      "attendance": ""
+    },
+    {
+      "telehandle": "jiangchuann",
+      "attendance": ""
+    },
+    {
+      "telehandle": "yanxiuu",
       "attendance": ""
     }
   ],
   "Standbys": [
     {
-      "telehandle": "rixsv",
-      "attendance": ""
-    },
-    {
-      "telehandle": "mqwrf",
-      "attendance": ""
-    }
-  ],
-  "TopToBtm": [
-    {
-      "telehandle": "xiiintao",
+      "telehandle": "JS_192",
       "attendance": ""
     },
     {
@@ -80,25 +74,47 @@
       "attendance": ""
     },
     {
-      "telehandle": "picobes",
+      "telehandle": "js4896",
+      "attendance": ""
+    },
+    {
+      "telehandle": "MarriedmanM",
+      "attendance": ""
+    },
+    {
+      "telehandle": "ArthurPuay",
+      "attendance": ""
+    },
+    {
+      "telehandle": "LiewLiew",
+      "attendance": ""
+    }
+  ],
+  "TopToBtm": [
+    {
+      "telehandle": "imKnownasR",
+      "attendance": ""
+    },
+    {
+      "telehandle": "bnnpl",
+      "attendance": ""
+    },
+    {
+      "telehandle": "JWENED",
       "attendance": ""
     }
   ],
   "TopToMid": [
     {
-      "telehandle": "LiewLiew",
+      "telehandle": "xinray",
       "attendance": ""
     },
     {
-      "telehandle": "MercedesKenz",
+      "telehandle": "picobes",
       "attendance": ""
     },
     {
-      "telehandle": "SWEEYEE",
-      "attendance": ""
-    },
-    {
-      "telehandle": "BryanIsTheName",
+      "telehandle": "calvinlam",
       "attendance": ""
     }
   ]

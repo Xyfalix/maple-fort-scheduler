@@ -2,7 +2,21 @@
   "name": "BF1",
   "BtmToMid": [
     {
-      "telehandle": "SKYTLSk",
+      "telehandle": "CLY1921",
+      "attendance": ""
+    },
+    {
+      "telehandle": "alvincxx",
+      "attendance": ""
+    },
+    {
+      "telehandle": "ekimoen",
+      "attendance": ""
+    }
+  ],
+  "BtmToTop": [
+    {
+      "telehandle": "SKYTLSK",
       "attendance": ""
     },
     {
@@ -14,35 +28,21 @@
       "attendance": ""
     }
   ],
-  "BtmToTop": [
+  "MidToBtm": [
     {
-      "telehandle": "CLY1921",
+      "telehandle": "b2darren",
       "attendance": ""
     },
     {
-      "telehandle": "jokeraward",
+      "telehandle": "JWENED",
       "attendance": ""
     },
     {
-      "telehandle": "sKunzzz",
+      "telehandle": "Hanghang84",
       "attendance": ""
     },
     {
       "telehandle": "XxVelo",
-      "attendance": ""
-    }
-  ],
-  "MidToBtm": [
-    {
-      "telehandle": "mwqn98",
-      "attendance": ""
-    },
-    {
-      "telehandle": "isxir",
-      "attendance": ""
-    },
-    {
-      "telehandle": "callmebolt",
       "attendance": ""
     }
   ],
@@ -52,30 +52,51 @@
       "attendance": ""
     },
     {
-      "telehandle": "Hanghang84",
+      "telehandle": "SKYTLSk",
       "attendance": ""
     },
     {
-      "telehandle": "alvincxx",
+      "telehandle": "jiangchuann",
+      "attendance": ""
+    },
+    {
+      "telehandle": "LiewLiew",
       "attendance": ""
     }
   ],
-  "Standbys": [],
-  "TopToBtm": [
+  "Standbys": [
     {
-      "telehandle": "GWLeeee",
+      "telehandle": "JS_192",
       "attendance": ""
     },
+    {
+      "telehandle": "sKunzzz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "js4896",
+      "attendance": ""
+    },
+    {
+      "telehandle": "MarriedmanM",
+      "attendance": ""
+    },
+    {
+      "telehandle": "ArthurPuay",
+      "attendance": ""
+    }
+  ],
+  "TopToBtm": [
     {
       "telehandle": "imKnownasR",
       "attendance": ""
     },
     {
-      "telehandle": "ongchengwei",
+      "telehandle": "bnnpl",
       "attendance": ""
     },
     {
-      "telehandle": "LCYSH",
+      "telehandle": "yanxiuu",
       "attendance": ""
     }
   ],
@@ -85,7 +106,7 @@
       "attendance": ""
     },
     {
-      "telehandle": "picobese",
+      "telehandle": "picobes",
       "attendance": ""
     },
     {

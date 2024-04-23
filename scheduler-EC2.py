@@ -11,7 +11,7 @@ TOKEN = os.environ.get('TOKEN')
 BOT_USERNAME = os.environ.get('BOT_USERNAME')
 MONGO_URI = os.environ.get('DATABASE_URL')
 DATABASE_NAME = os.environ.get('DATABASE_NAME')
-FORT_SCHEDULE_ARRAY = ["BF1", "BF1", "BF5", "BF5", "BF5", "BF5", "BF5", "BF5"]
+FORT_SCHEDULE_ARRAY = ["BF1", "BF2", "BF3", "BF4", "BF5", "BF6", "BF7", "BF8"]
 # set states for ConversationHandler for user replacement
 SELECT_SECTION, SELECT_USER_TO_REPLACE, TYPE_IN_REPLACEMENT = range(3)
 # set state for ConversationHandler for fort acknowledgement

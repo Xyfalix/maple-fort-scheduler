@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 from datetime import datetime, time
 import pytz
-import asyncio
 
 load_dotenv()
 TOKEN = os.environ.get('TOKEN')
@@ -207,8 +206,8 @@ async def generate_temp_fort_list(context: ContextTypes.DEFAULT_TYPE):
 async def send_fort_list(context: ContextTypes.DEFAULT_TYPE):
     fort_list = context.bot_data.get('fort_list', 'fort list not found')
     # change chat_id to the group that you want to send it to
-    sent_message = await context.bot.send_message(chat_id=NICHOLAS_CHAT_ID, text=fort_list)
-    await context.bot.pin_chat_message(chat_id=NICHOLAS_CHAT_ID, message_id=sent_message.message_id)
+    sent_message = await context.bot.send_message(chat_id=EXILES_MAIN_CHAT_ID, text=fort_list)
+    await context.bot.pin_chat_message(chat_id=EXILES_MAIN_CHAT_ID, message_id=sent_message.message_id)
 
 
 # scheduled command
@@ -312,60 +311,25 @@ async def start_edit(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     check_role = user.get('role')
     print(f"user's role is {check_role}")
     if check_role == "admin":
-        # Ask the user which section they want to edit
-        sections = ["TopToMid", "TopToBtm", "MidToTop", "MidToBtm", "BtmToMid", "BtmToTop", "Standbys", "Cancel"]
-        keyboard = [[InlineKeyboardButton(section, callback_data=section)] for section in sections]
-
-        reply_markup = InlineKeyboardMarkup(keyboard)
-
-        await update.message.reply_text("Please choose the section you want to edit", reply_markup=reply_markup)
-
-        return SELECT_SECTION
-    else:
-        # Handle the case where the user doesn't have the role attribute
-        await update.message.reply_text("You don't have the necessary privileges to use this command.")
-        return ConversationHandler.END  # End the conversation
-    
-
-# user initiated command
-async def select_mbr_to_replace(update:Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    print("select_mbr_to_replace function is running")
-    # retrieve the section to edit and display usernames for edit
-    query = update.callback_query
-    await query.answer()
-
-    print(f"query is {query}")
-    print(f"query data is {query.data}")
-
-    context.user_data['section'] = query.data
-
-    fortlist = db.fortlists
-    bf_list_document = fortlist.find_one({"name": "temp"})
-    if bf_list_document:
-        section_to_edit = bf_list_document.get(query.data,[])
-        print(f"selected section is {section_to_edit}")
-
+        fortlist = db.fortlists
+        bf_list_document = fortlist.find_one({"name": "temp"})
         telehandles = []
-
-        # iterate through each object in the array section that has been queried
-        for user in section_to_edit:
-            print(f"user info is {user}")
-            telehandle = user.get("telehandle", "")
-            telehandles.append(telehandle)
-
-        # add the cancel option inside telehandles
-        telehandles.append("Cancel")
-        print(f"telehandles array is {telehandles}")
-
-        # Ask the user which telehandle they want to edit
+        # generate list of telehandles excluding standby
+        for section in bf_list_document:
+            if section != "Standbys" and isinstance(bf_list_document[section], list):
+                for user in bf_list_document[section]:
+                    telehandles.append(user["telehandle"])
         keyboard = [[InlineKeyboardButton(telehandle, callback_data=telehandle)] for telehandle in telehandles]
 
         reply_markup = InlineKeyboardMarkup(keyboard)
 
-        # generate buttons that correspond to the telehandles in the selected section
-        await query.edit_message_text("Please select the user you want to replace", reply_markup=reply_markup)
+        await update.message.reply_text("Please select the user you want to replace", reply_markup=reply_markup)
 
         return SELECT_USER_TO_REPLACE
+    else:
+        # Handle the case where the user doesn't have the role attribute
+        await update.message.reply_text("You don't have the necessary privileges to use this command.")
+        return ConversationHandler.END  # End the conversation
     
 # user initiated command
 async def select_replacement(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
@@ -390,11 +354,12 @@ async def select_replacement(update: Update, context: ContextTypes.DEFAULT_TYPE)
             telehandle = user.get("telehandle", "")
             telehandles.append(telehandle)
         
-        # add option for user to key in a replacement username manuallyinside telehandles
+        # add option for user to key in a replacement username manually inside telehandles
         telehandles.append("Change user manually")
 
         # add the cancel option inside telehandles
         telehandles.append("Cancel")
+
         print(f"telehandles array is {telehandles}")
 
         keyboard = []
@@ -419,7 +384,7 @@ async def get_user_manual_replacement(update: Update, context: ContextTypes.DEFA
     await query.answer()
     
     # Ask the user for the replacement telehandle
-    await query.edit_message_text("Please key in the telehandle of the replacement")
+    await query.edit_message_text("Please key in the telehandle of the replacement without @ in front!")
 
     return TYPE_IN_REPLACEMENT
 
@@ -430,9 +395,6 @@ async def execute_text_replacement(update: Update, context: ContextTypes.DEFAULT
     replacement_telehandle = update.message.text
     print(f"replacement_telehandle is {replacement_telehandle}")
 
-    section = context.user_data.get('section', '')
-    print(f"selected section is {section}")
-
     selected_telehandle = context.user_data.get('selected_telehandle', '')
     print(f"selected telehandle is {selected_telehandle}")
 
@@ -440,19 +402,18 @@ async def execute_text_replacement(update: Update, context: ContextTypes.DEFAULT
     bf_list_document = fortlist.find_one({"name": "temp"})
 
     if bf_list_document:
-        # Search for the user in the specified section with the selected telehandle
-        users_to_replace = bf_list_document.get(section, [])
-        print(f"users_to_replace is {users_to_replace}")
+        # Replace selected user with the replacement user from standby
+        for section in bf_list_document:
+            if section != "Standbys" and isinstance(bf_list_document[section], list):
+                for user in bf_list_document[section]:
+                     if user.get("telehandle") == selected_telehandle:
+                        user["telehandle"] = replacement_telehandle
+                        user["attendance"] = ""
+                        break
 
-        for user in users_to_replace:
-            if user.get("telehandle") == selected_telehandle:
-                user["telehandle"] = replacement_telehandle
-                user["attendance"] = ""
-                standbys = bf_list_document.get("Standbys", [])
-                bf_list_document["Standbys"] = [user for user in standbys if user.get("telehandle") != selected_telehandle]
-                break  # Exit loop after the first replacement
-        
-        print(f"edited user section is {users_to_replace}")
+        # remove standby that replaces current user from the standby list
+        standbys = bf_list_document.get("Standbys", [])
+        bf_list_document["Standbys"] = [user for user in standbys if user.get("telehandle") != replacement_telehandle]
 
         # Update the document in MongoDB
         fortlist.update_one({"name": "temp"}, {"$set": bf_list_document})
@@ -469,9 +430,7 @@ async def execute_option_replacement(update: Update, context: ContextTypes.DEFAU
     query = update.callback_query
     await query.answer()
     replacement_telehandle = update.callback_query.data 
-
-    section = context.user_data.get('section', '')
-    print(f"selected section is {section}")
+    print(f"replacement telehandle is {replacement_telehandle}")
 
     selected_telehandle = context.user_data.get('selected_telehandle', '')
     print(f"selected telehandle is {selected_telehandle}")
@@ -480,19 +439,18 @@ async def execute_option_replacement(update: Update, context: ContextTypes.DEFAU
     bf_list_document = fortlist.find_one({"name": "temp"})
 
     if bf_list_document:
-        # Search for the user in the specified section with the selected telehandle
-        users_to_replace = bf_list_document.get(section, [])
-        print(f"users_to_replace is {users_to_replace}")
+        # Replace selected user with the replacement user from standby
+        for section in bf_list_document:
+            if section != "Standbys" and isinstance(bf_list_document[section], list):
+                for user in bf_list_document[section]:
+                     if user.get("telehandle") == selected_telehandle:
+                        user["telehandle"] = replacement_telehandle
+                        user["attendance"] = ""
+                        break
 
-        for user in users_to_replace:
-            if user.get("telehandle") == selected_telehandle:
-                user["telehandle"] = replacement_telehandle
-                user["attendance"] = ""
-                standbys = bf_list_document.get("Standbys", [])
-                bf_list_document["Standbys"] = [user for user in standbys if user.get("telehandle") != replacement_telehandle]
-                break  # Exit loop after the first replacement
-        
-        print(f"edited user section is {users_to_replace}")
+        # remove standby that replaces current user from the standby list
+        standbys = bf_list_document.get("Standbys", [])
+        bf_list_document["Standbys"] = [user for user in standbys if user.get("telehandle") != replacement_telehandle]
 
         # Update the document in MongoDB
         fortlist.update_one({"name": "temp"}, {"$set": bf_list_document})
@@ -511,7 +469,6 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.answer()
     await query.edit_message_text(text="See you next time!")
     return ConversationHandler.END
-
 
 # scheduled command
 async def send_replace_reminders(context: ContextTypes.DEFAULT_TYPE):
@@ -633,11 +590,6 @@ def main():
     edit_handler = ConversationHandler(
     entry_points=[CommandHandler("edit", start_edit)],
     states={
-        SELECT_SECTION: [
-            CallbackQueryHandler(cancel, pattern="^" + "Cancel" + "$" ),
-            CallbackQueryHandler(select_mbr_to_replace),
-            
-        ],
         SELECT_USER_TO_REPLACE: [
             CallbackQueryHandler(cancel, pattern="^" + "Cancel" + "$" ),
             CallbackQueryHandler(select_replacement),

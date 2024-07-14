@@ -66,10 +66,6 @@
   ],
   "Standbys": [
     {
-      "telehandle": "picobes",
-      "attendance": ""
-    },
-    {
       "telehandle": "snvim",
       "attendance": ""
     },
@@ -127,6 +123,10 @@
     },
     {
       "telehandle": "sKunzzz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "picobes",
       "attendance": ""
     }
   ]

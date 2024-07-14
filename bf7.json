@@ -60,15 +60,11 @@
       "attendance": ""
     },
     {
-      "telehandle": "jokeraward",
+      "telehandle": "imKnownasR",
       "attendance": ""
     }
   ],
   "Standbys": [
-    {
-      "telehandle": "picobes",
-      "attendance": ""
-    },
     {
       "telehandle": "snvim",
       "attendance": ""
@@ -86,7 +82,7 @@
       "attendance": ""
     },
     {
-      "telehandle": "mqwrf",
+      "telehandle": "YewGin",
       "attendance": ""
     },
     {
@@ -98,17 +94,17 @@
       "attendance": ""
     },
     {
-      "telehandle": "ImKnownasR",
+      "telehandle": "jokeraward",
       "attendance": ""
     }
   ],
   "TopToBtm": [
     {
-      "telehandle": "royango",
+      "telehandle": "mqwrf",
       "attendance": ""
     },
     {
-      "telehandle": "YewGin",
+      "telehandle": "royango",
       "attendance": ""
     },
     {
@@ -127,6 +123,10 @@
     },
     {
       "telehandle": "sKunzzz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "picobes",
       "attendance": ""
     }
   ]

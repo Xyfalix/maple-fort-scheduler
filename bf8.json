@@ -6,7 +6,7 @@
       "attendance": ""
     },
     {
-      "telehandle": "MarriedmanM",
+      "telehandle": "tweilun",
       "attendance": ""
     },
     {
@@ -38,7 +38,7 @@
       "attendance": ""
     },
     {
-      "telehandle": "yanxiuu",
+      "telehandle": "isxir",
       "attendance": ""
     },
     {
@@ -56,37 +56,33 @@
       "attendance": ""
     },
     {
-      "telehandle": "therejectionhelpdesk",
+      "telehandle": "Niclim90",
       "attendance": ""
     },
     {
-      "telehandle": "jokeraward",
+      "telehandle": "imKnownasR",
       "attendance": ""
     }
   ],
   "Standbys": [
     {
-      "telehandle": "picobes",
-      "attendance": ""
-    },
-    {
       "telehandle": "snvim",
       "attendance": ""
     },
     {
-      "telehandle": "Niclim90",
+      "telehandle": "therejectionhelpdesk",
       "attendance": ""
     },
     {
-      "telehandle": "tweilun",
+      "telehandle": "MarriedmanM",
       "attendance": ""
     },
     {
-      "telehandle": "isxir",
+      "telehandle": "yanxiuu",
       "attendance": ""
     },
     {
-      "telehandle": "mqwrf",
+      "telehandle": "royango",
       "attendance": ""
     },
     {
@@ -98,13 +94,13 @@
       "attendance": ""
     },
     {
-      "telehandle": "ImKnownasR",
+      "telehandle": "jokeraward",
       "attendance": ""
     }
   ],
   "TopToBtm": [
     {
-      "telehandle": "royango",
+      "telehandle": "mqwrf",
       "attendance": ""
     },
     {
@@ -127,6 +123,10 @@
     },
     {
       "telehandle": "sKunzzz",
+      "attendance": ""
+    },
+    {
+      "telehandle": "picobes",
       "attendance": ""
     }
   ]
